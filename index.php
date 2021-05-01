@@ -7,21 +7,29 @@
 <?php
 // Chess board style
 echo<<<MARCAJ
+  <style>
+    table,th,td {
+    border:1px solid black;
+    }
+    table {
+    width:500px;
+    height:500px;
+    border-collapse:collapse;
+    }   
+    #infinity-column-container {
+    position:absolute;
+    left:750px;
+    top:35px;    
+        
+    }
+    #infinity_column {
+     position:absolute;
+     top:30px;
+     left:950px;
+    }
 
-                <style>
-                table,th,td {
-                border:1px solid black;
 
-                }
-                table {
-                width:500px;
-                height:500px;
-                border-collapse:collapse;
-                }
-
-
-                </style>
-
+    </style>
 MARCAJ;
 
 ?>
@@ -73,6 +81,78 @@ for( $i=0; $i < 30; $i++ ){
 }
 echo '<p>This is a sum calculation pattern,calculating <span style="font-size:40px;">&Sigma;</span> <span style="position:relative; top:12px; left:-28px;"><sub>i=1</sub></span> <span style="position:relative; top:-25px; left:-55px;"><sup>i=30</sup></span> <span style="position:relative; left:-60px; font-size:16px;">i</span> </p>';
 echo '<p>The sum of the first 30 positive integers is: </p>'.$total;
+
+echo '<br><br>';
+//Constantin Brancusi's infinity column
+echo '<p style="position:absolute;top:-2px;left:620px">This is Constantin Brancusi\'s infinity column pattern</p>';
+echo '<div id="infinity-column-container">';
+
+for( $k=0; $k<3; $k++ ){
+
+//Upper half segment of a portion
+for( $i=6 ; $i > 0 ; $i-- ) {
+   
+    for( $j = 0 ; $j < $i ; $j++ ) {
+         if( $i===5 && $j===0 ) {
+             echo "  ";  
+         }else if( $i===4 && $j===0 ) {
+            echo "   ";
+         }else if( $i===3 && $j===0 ) {
+            echo "    ";
+         }else if( $i===2 && $j===0 ) {
+             echo "     ";
+         }else if( $i===1 ) {
+                  break;
+         }
+         else{
+            echo '<span style="font-size: 28px;">@</span>';
+         }
+        
+
+    }
+     echo '<br>';
+
+}
+
+echo '     <span style="font-size: 32px;position:relative;top:-10px;">o</span><br>';
+//Lower half segment of a portion
+for( $i = 0; $i < 6 ; $i++ ) {
+    
+    for( $j = 0; $j< $i + 2 ; $j++  ) {
+          
+        if( $i===0 && $j===0  ) {
+              echo '     '; 
+           }else if( $i===1 && $j===0 ) {
+              echo '    ';
+          }else if( $i===2 && $j===0 ) {
+            echo '   ';
+          }else if( $i===3 && $j===0 ) {
+            echo '  ';
+          }else if( $i===4 && $j===0 ) {
+            echo '';
+          }else if( $i===4 && $j===1 ) {
+           echo '<span style="font-size: 28px;">@@</span>';  
+          }else if( $i===5 && $j===0 ) {
+              break;
+          }
+          else {
+            echo '<span style="font-size: 28px;">@</span>';
+          }
+         
+    
+    }  
+    echo '<br>';
+}
+
+
+
+
+
+}
+echo '</div>';
+
+echo '<img id="infinity_column" src="infinity_column.jpg" width="30%" height="80%" alt="Infinity column photo">';
+
 
 ?>    
 
